@@ -1,0 +1,11 @@
+div.clock {
+    container-type: inline-size;
+    display: flex;
+    align-items: center;
+}
+
+.display {
+    font-size: 16cqw;
+    text-align: center;
+    width: 100%;
+}

@@ -1,0 +1,7 @@
+.error {
+    background-color: var(--mui-palette-error-light);
+}
+
+input.stringField {
+    caret-color: auto;
+}

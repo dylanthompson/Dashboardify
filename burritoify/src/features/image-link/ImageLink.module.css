@@ -1,0 +1,14 @@
+.imageLink {
+    background-color: green;
+}
+
+a.link {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+a.link > img.image {
+    width: 100%;
+    object-fit: cover;
+}

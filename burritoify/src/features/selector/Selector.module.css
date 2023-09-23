@@ -1,0 +1,21 @@
+.selector {
+    display:flex;
+    flex-direction: row;
+}
+
+button.button {
+    padding: 0 12px;
+    display:flex;
+    border: solid 1px var(--mui-palette-grey-800);
+    text-align: left;
+    margin-right: 16px;
+    height: 36px;
+}
+
+.button.selected {
+    background-color:var(--mui-palette-primary-dark);
+}
+
+.button > .icon {
+    padding-right: 8px;
+}
