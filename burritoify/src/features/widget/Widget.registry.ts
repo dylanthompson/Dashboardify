@@ -41,10 +41,10 @@ export const widgetRegistry: IWidgetRegistry[] = [
         formFields: FORM_FIELDS_Clock,
         icon: '🕔'
     },
-    {
-        name: 'Dashboard',
-        component: Dashboard,
-        formFields: null,
-        icon: '🗔'
-    }
+    // {
+    //     name: 'Dashboard',
+    //     component: Dashboard,
+    //     formFields: null,
+    //     icon: '🗔'
+    // }
 ]

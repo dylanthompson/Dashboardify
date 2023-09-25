@@ -8,6 +8,7 @@ export function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.container}>
+        <div className={styles.settings}>📍</div>
         <div className={styles.settings}>⚙️</div>
         <div className={styles.settings} onClick={() => dispatch(setView("View"))}>👁️</div>
       </div>

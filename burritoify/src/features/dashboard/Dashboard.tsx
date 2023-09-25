@@ -41,15 +41,15 @@ export function Dashboard(props: any) {
         return (<Weather {...widget}/>);
       case 'Clock':
         return (<Clock {...widget}/>);
-      case 'Dashboard':
-        return (<Dashboard { ...widget } {...{storageKey: newDashboardKey}}/>);
+      // case 'Dashboard':
+      //    return (<Dashboard { ...widget } {...{storageKey: newDashboardKey}}/>);
       default:
         return widget.toString();
     }
   };
 
   // layout is an array of objects, see the demo for more complete usage
-  const layouts = props. useAppSelector(state => state.dashboardWidgets.layouts);
+  const layouts = useAppSelector(state => state.dashboardWidgets.layouts);
   const widgets = useAppSelector(state => state.dashboardWidgets.widgets);
   const selectedWidgetKey = useAppSelector(state => state.dashboardWidgets.selectedWidgetKey);
   const view = useAppSelector(state => state.view.view);
