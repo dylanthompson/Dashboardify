@@ -3,9 +3,13 @@ import { createSlice } from '@reduxjs/toolkit'
 export interface ViewState {
   view: "Edit" | "View",
 }
+let defaultViewName = 'View';
+if (typeof localStorage !== 'undefined') {
+  defaultViewName = localStorage['defaultView'] || 'View';
+}
 
 const initialState: ViewState = {
-  view: "Edit"
+  view: <any>defaultViewName
 }
 
 const viewSlice = createSlice({

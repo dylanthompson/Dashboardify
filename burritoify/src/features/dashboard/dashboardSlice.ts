@@ -4,13 +4,16 @@ import { getDefaultResponsiveLayouts, getDefaultWidgets } from './layout';
 export interface DashboardWidgetState {
   widgets: any[],
   layouts: {[key: string]: any},
-  selectedWidgetKey: string
+  selectedWidgetKey: string,
+  selectedWidget: string
+
 }
 
 const initialState: DashboardWidgetState = {
   widgets: getDefaultWidgets(),
   layouts: getDefaultResponsiveLayouts(),
-  selectedWidgetKey: null
+  selectedWidgetKey: null,
+  selectedWidget: null,
 }
 
 function savePreferences(layouts: any, widgets?: any[]) {
@@ -61,13 +64,20 @@ const dashboardSlice = createSlice({
   reducers: {
     setSelectedWidgetKey: (state, action) => {
       state.selectedWidgetKey = action.payload;
+      state.selectedWidget = state.widgets.find((w:any) => w.i === state.selectedWidgetKey)
     },
     setLayouts: (state, action) => {
       state.layouts = action.payload;
       savePreferences(state.layouts, state.widgets)
     },
-    setWidgets: (state, action) => {
-      state.widgets = action.payload;
+    setWidgetValue: (state, action) => {
+      let { i, name, value } = action.payload;
+      let matchingWidget = state.widgets.find((w: any) => {
+        return w.i == i;
+      })
+      if (matchingWidget) {
+        matchingWidget[name] = value;
+      }
       savePreferences(state.layouts, state.widgets)
     },
     addWidget: (state, action) => {
@@ -75,12 +85,16 @@ const dashboardSlice = createSlice({
       savePreferences(state.layouts, state.widgets)
     },
     removeWidget: (state, action) => {
+      if (action.payload == state.selectedWidgetKey) {
+        state.selectedWidgetKey = null;
+        state.selectedWidget = null;
+      }
       state.widgets = state.widgets.filter((w: any) => w.i != action.payload)
       savePreferences(state.layouts, state.widgets)
     }
   },
 })
 
-export const { addWidget, removeWidget, setLayouts, setWidgets, setSelectedWidgetKey } = dashboardSlice.actions
+export const { addWidget, removeWidget, setLayouts, setWidgetValue, setSelectedWidgetKey } = dashboardSlice.actions
 
 export default dashboardSlice.reducer

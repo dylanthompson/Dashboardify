@@ -1,6 +1,9 @@
 .selector {
     display:flex;
     flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 12px;
 }
 
 button.button {
@@ -8,7 +11,7 @@ button.button {
     display:flex;
     border: solid 1px var(--mui-palette-grey-800);
     text-align: left;
-    margin-right: 16px;
+    margin-right: 12px;
     height: 36px;
 }
 
@@ -18,4 +21,9 @@ button.button {
 
 .button > .icon {
     padding-right: 8px;
+}
+
+.header {
+    display: flex;
+    padding-right: 16px;
 }

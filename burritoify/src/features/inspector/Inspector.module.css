@@ -5,3 +5,46 @@
 input.stringField {
     caret-color: auto;
 }
+
+.inspector {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div.form {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 1000px)  {
+    .inspector {
+        flex-direction: column;
+    }
+    div.form {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+.none {
+    font-size: 18px;
+}
+
+.formRow {
+    margin: 8px 8px;
+    width:100%;
+    
+}
+
+.formField {
+    width:100%;
+}
+
+.header {
+    margin: 0px 8px;
+    height:100%;
+    display: flex;
+}

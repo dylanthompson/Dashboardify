@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { theme } from '../../App';
 import { useAppDispatch } from '../../app/hooks';
 import { addWidget } from '../dashboard/dashboardSlice';
-import { widgetRegistry, IWidgetRegistry } from '../widget/Widget.directory';
+import { widgetRegistry, IWidgetRegistry } from '../widget/Widget.registry';
 import styles from "./Selector.module.css";
 import { getDefaultWidgets } from '../dashboard/layout';
 
@@ -34,7 +34,9 @@ export function Selector(props: any) {
     }
     return (
         <div>
+            
             <Box className={styles.selector}>
+                <h3 className={styles.header}>📊 Create Widget</h3>
                 <Button className={styles.button} onClick={addWidgetClick}>
                     <span className={styles.icon}>➕</span>
                     <span>Add Widget</span>

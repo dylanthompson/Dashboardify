@@ -9,6 +9,7 @@ import Weather from "../weather/Weather";
 import Clock from "../clock/Clock";
 import { useState } from "react";
 import { setLayouts } from "./dashboardSlice";
+import { getDefaultBreakpoints, getDefaultColumns } from "./layout";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -29,6 +30,7 @@ export function Dashboard(props: any) {
   }
 
   const findComponent = function(widget: any) {
+    let newDashboardKey = new Date().toISOString();
     let type = widget?.i?.split('|')[0];
     switch (type){
       case 'ImageLink':
@@ -39,13 +41,15 @@ export function Dashboard(props: any) {
         return (<Weather {...widget}/>);
       case 'Clock':
         return (<Clock {...widget}/>);
+      case 'Dashboard':
+        return (<Dashboard { ...widget } {...{storageKey: newDashboardKey}}/>);
       default:
         return widget.toString();
     }
   };
 
   // layout is an array of objects, see the demo for more complete usage
-  const layouts = useAppSelector(state => state.dashboardWidgets.layouts);
+  const layouts = props. useAppSelector(state => state.dashboardWidgets.layouts);
   const widgets = useAppSelector(state => state.dashboardWidgets.widgets);
   const selectedWidgetKey = useAppSelector(state => state.dashboardWidgets.selectedWidgetKey);
   const view = useAppSelector(state => state.view.view);
@@ -64,8 +68,8 @@ export function Dashboard(props: any) {
       isDraggable={view === 'Edit'}
       isResizable={view === 'Edit'}
       margin={[0,0]}
-      breakpoints={{ lg: 1200, sm: 768, xs: 480 }}
-      cols={{ lg: 12, sm: 6, xs: 2 }}
+      breakpoints={getDefaultBreakpoints()}
+      cols={getDefaultColumns()}
       onLayoutChange={(layout, layouts) =>
         onLayoutChange(layout, layouts)
       }

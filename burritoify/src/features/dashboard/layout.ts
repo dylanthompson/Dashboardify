@@ -1,20 +1,20 @@
 import { Layout } from "react-grid-layout";
 
 // breakpoints={{ lg: 1200, sm: 768, xs: 480 }}
-// cols={{ lg: 12, sm: 6, xs: 2 }}
+// columns={{ lg: 12, sm: 6, xs: 2 }}
 
 const DEFAULT_BREAKPOINTS: any = {
     lg: {
-        breakpoint: 1200,
-        cols: 12
+        breakpoint: 1350,
+        columns: 12
     },
     sm: {
-        breakpoint: 768,
-        cols: 6
+        breakpoint: 980,
+        columns: 6
     },
     xs: {
-        breakpoint: 480,
-        cols: 2
+        breakpoint: 0,
+        columns: 2
     }
 }
 

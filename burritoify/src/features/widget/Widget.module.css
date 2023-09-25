@@ -4,6 +4,8 @@
     outline: 1px solid var(--mui-palette-info-contrastText);
     outline-offset: -1px;
     overflow: hidden;
+    mix-blend-mode: difference;
+    
 }
 
 .widget.selected {
@@ -33,4 +35,5 @@
     z-index: 10;
     color: transparent;  
     text-shadow: 0 0 0 var(--mui-palette-info-contrastText);
+    mix-blend-mode: difference;
 }

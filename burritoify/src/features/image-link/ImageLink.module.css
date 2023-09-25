@@ -1,14 +1,18 @@
-.imageLink {
-    background-color: green;
-}
-
 a.link {
     height: 100%;
     width: 100%;
     display: flex;
+    transition: all .2s ease-in-out;
 }
 
 a.link > img.image {
     width: 100%;
     object-fit: cover;
+}
+
+a.link:hover {
+    transform: scale(1.115);
+    z-index: 999;
+    border-radius: 20px;
+    overflow: hidden;
 }

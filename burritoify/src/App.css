@@ -3,6 +3,10 @@
   caret-color: transparent;
 }
 
+.react-resizable-handle {
+  mix-blend-mode: difference;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

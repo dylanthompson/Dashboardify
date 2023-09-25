@@ -9,3 +9,7 @@ div.clock {
     text-align: center;
     width: 100%;
 }
+
+div.mediumClock {
+    font-size: 20cqw;
+}
