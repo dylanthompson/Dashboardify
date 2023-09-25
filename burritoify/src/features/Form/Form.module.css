@@ -1,0 +1,33 @@
+.form {
+    align-items: center;
+}
+
+.error {
+    background-color: var(--mui-palette-error-light);
+}
+
+.formField {
+    width:100%;
+}
+
+.stringField {
+    caret-color: auto;
+}
+
+div.form {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 1000px)  {
+    div.form {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+.formRow {
+    margin: 8px 8px;
+    width:100%;
+}

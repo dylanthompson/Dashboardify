@@ -1,6 +1,5 @@
 
 import { Layout, Responsive, WidthProvider } from "react-grid-layout";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { ImageLink } from '../image-link/ImageLink';
 import { Map } from '../map/Map';
 import { Widget } from "../widget/Widget";
@@ -10,6 +9,7 @@ import Clock from "../clock/Clock";
 import { useState } from "react";
 import { setLayouts } from "./dashboardSlice";
 import { getDefaultBreakpoints, getDefaultColumns } from "./layout";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 

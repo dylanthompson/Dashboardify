@@ -77,6 +77,9 @@ const dashboardSlice = createSlice({
       })
       if (matchingWidget) {
         matchingWidget[name] = value;
+        if (matchingWidget.i == state.selectedWidgetKey) {
+          state.selectedWidget = matchingWidget;
+        }
       }
       savePreferences(state.layouts, state.widgets)
     },

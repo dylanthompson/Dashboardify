@@ -2,12 +2,7 @@ import { FORM_FIELDS_ImageLink, ImageLink } from "../image-link/ImageLink"
 import Weather from "../weather/Weather"
 import { FORM_FIELDS_Map, Map } from "../map/Map"
 import Clock, { FORM_FIELDS_Clock } from "../clock/Clock"
-import { Dashboard } from "../dashboard/Dashboard";
-
-export interface FormField {
-    name: string;
-    type: string;
-}
+import { FormField } from "../Form/Form"
 
 export interface IWidgetRegistry {
     name: string,
