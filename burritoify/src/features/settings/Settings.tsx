@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './Settings.module.css';
-import { useAppSelector } from '../../app/hooks';
-import Form from '../Form/Form';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import Form, { getFormValue } from '../Form/Form';
+import { setMyLocation } from '../settingsSlicer';
+import { useSnackbar } from 'notistack';
 
 export const FORM_FIELDS_Settings = [
    {
@@ -13,20 +15,27 @@ export const FORM_FIELDS_Settings = [
 interface SettingsProps {}
 
 const Settings: FC<SettingsProps> = () => {
-   let myLocation = useAppSelector((state) => state.settings.location.mylocation);
+   let myLocation = useAppSelector((state) => state.settings.location);
+   let dispatch = useAppDispatch();
+   let [location, setStateLocation] = useState(myLocation.mylocation);
+   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+   
    let handleSubmit = (event: any) => {
-      console.log("Submitted")
+      
+      enqueueSnackbar<'info'>('Updated settings');
+
+      dispatch(setMyLocation(location))
       event.preventDefault()
    }
 
-   let handleChange = (e, field) => {
-      
+   let handleChange = (event, field) => {
+      setStateLocation({ "mylocation": getFormValue(event, field) } as any);
    }
 
   return (
    <div data-testid="Settings" className={styles.settings}>
       Settings
-      <Form {...{formFields: FORM_FIELDS_Settings, value: myLocation, handleChange, handleSubmit}}>
+      <Form {...{formFields: FORM_FIELDS_Settings, value: location, handleChange, handleSubmit}}>
       </Form>
    </div>
  )

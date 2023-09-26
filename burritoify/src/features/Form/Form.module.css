@@ -1,4 +1,4 @@
-.form {
+form.form {
     align-items: center;
 }
 
@@ -14,7 +14,7 @@
     caret-color: auto;
 }
 
-div.form {
+form.form {
     display: flex;
     flex-direction: row;
     flex-grow: 1;

@@ -1,5 +1,6 @@
 import DialogTitle from '@mui/material/DialogTitle';
 import MuiDialog from '@mui/material/Dialog';
+import { Button, DialogActions } from '@mui/material';
 
 export interface DialogProps {
   open: boolean;
@@ -17,8 +18,13 @@ export function Dialog(props: DialogProps) {
 
   return (
     <MuiDialog onClose={handleClose} open={open}>
-      <DialogTitle>Set backup account</DialogTitle>
+      <DialogTitle>Settings</DialogTitle>
       {props.children}
+      <DialogActions>
+        <Button onClick={handleClose} color="primary">
+          OK
+        </Button>
+      </DialogActions>
     </MuiDialog>
   );
 }

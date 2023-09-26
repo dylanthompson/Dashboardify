@@ -2,7 +2,7 @@ import styles from './Inspector.module.css';
 import { Box, TextField, FormControl, Checkbox, FormControlLabel  } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { widgetRegistry } from '../widget/Widget.registry';
-import { setWidgetValue } from '../dashboard/dashboardSlice';
+import { setSelectedWidgetValue } from '../dashboard/dashboardSlice';
 import { FC } from 'react';
 import Form, { FormField, getFormValue } from '../Form/Form';
 import { store } from '../../app/store';
@@ -17,15 +17,14 @@ const Inspector: FC<InspectorProps> = () => {
    let selectedWidgetRegistry = widgetRegistry.find((wr) => {
       return widgetType == wr.name;
    })
-
+   
    let handleSubmit = (event: any) => {
-      console.log("Submitted")
       event.preventDefault()
    }
 
    let updateWidget = (event: any, field: FormField) => {
       if (selectedWidget) {
-         dispatch(setWidgetValue({
+         dispatch(setSelectedWidgetValue({
             i: selectedWidget.i,
             name: event.target.name,
             value: getFormValue(event, field)
@@ -37,7 +36,7 @@ const Inspector: FC<InspectorProps> = () => {
       return (
          <Box className={styles.inspector}>
             <h3 className={styles.header}>🔎 Inspector</h3>
-            <Form {...{ value: selectedWidget, formFields: selectedWidgetRegistry.formFields, handleChange: updateWidget, handleSubmit}}>
+            <Form {...{ value: selectedWidget, formFields: selectedWidgetRegistry.formFields, handleChange: updateWidget, handleSubmit: null}}>
             </Form>
          </Box>
       )

@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { loadPreferences } from './persist';
 
 export interface ViewState {
   view: "Edit" | "View",
 }
 let defaultViewName = 'View';
+
 if (typeof localStorage !== 'undefined') {
   defaultViewName = localStorage['defaultView'] || 'View';
 }

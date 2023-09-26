@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styles from './Form.module.css';
-import { Checkbox, FormControl, FormControlLabel, TextField } from '@mui/material';
+import { Button, Checkbox, FormControl, FormControlLabel, TextField } from '@mui/material';
+import { useSnackbar } from 'notistack';
 
 interface FormProps {
    handleSubmit: Function,
@@ -38,22 +39,31 @@ export let getFormValue = (event:any, field: FormField) => {
 }
 
 const Form: FC<FormProps> = (props) => {
-
+   
    let handleSubmit = (e:any) => {
-      props.handleSubmit(e);
+      if (props.handleSubmit) {
+         props.handleSubmit(e);
+      }
    }
 
    let handleChange = (e, field) => {
       props.handleChange(e, field);
    }
 
+   let renderButton = () => {
+      if (props.handleSubmit) {
+         return <Button type="submit">Save</Button>
+      }
+   }
+
    return (
-      <FormControl className={styles.form} onSubmit={handleSubmit}>
+      <FormControl component="form" className={styles.form} onSubmit={handleSubmit}>
          {props.formFields.map((field: FormField, i: number) => (
             <span key={i} className={styles.formRow}>
                {renderField(field, props.value?.[field.name], handleChange)}
             </span>
          ))}
+         {renderButton()}
       </FormControl>
       )
 };

@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { getDefaultResponsiveLayouts, getDefaultWidgets } from './layout';
+import { loadPreferences, mergePreferences } from '../persist';
 
 export interface DashboardWidgetState {
   widgets: any[],
@@ -16,48 +17,6 @@ const initialState: DashboardWidgetState = {
   selectedWidget: null,
 }
 
-function savePreferences(layouts: any, widgets?: any[]) {
-  if (typeof localStorage !== 'undefined') {
-    let appDataString = localStorage.getItem("appData");
-    if (appDataString) {
-      let appData = JSON.parse(appDataString);
-      appData.layouts = layouts;
-      if (widgets) {
-        appData.widgets = widgets;
-      }
-      localStorage.setItem(
-        "appData",
-        JSON.stringify(appData)
-      );
-    }  else {
-      let newAppData: any = {
-        layouts: layouts
-      }
-      if (widgets) {
-        newAppData.widgets = widgets;
-      }
-      localStorage.setItem(
-        "appData",
-        JSON.stringify(newAppData)
-      );
-
-    }
-  }
-}
-
-
-function loadPreferences() {
-  let ls: any = {};
-  if (typeof localStorage !== 'undefined') {
-    try {
-      return JSON.parse(localStorage.getItem("appData")) || null;
-    } catch (e) {
-      /*Ignore*/
-    }
-  }
-  return null;
-}
-
 const dashboardSlice = createSlice({
   name: 'dashboardWidgets',
   initialState: loadPreferences() != null ? loadPreferences() : initialState,
@@ -68,9 +27,12 @@ const dashboardSlice = createSlice({
     },
     setLayouts: (state, action) => {
       state.layouts = action.payload;
-      savePreferences(state.layouts, state.widgets)
+      mergePreferences({
+        "layout": state.layouts,
+        "widgets": state.widgets
+      })
     },
-    setWidgetValue: (state, action) => {
+    setSelectedWidgetValue: (state, action) => {
       let { i, name, value } = action.payload;
       let matchingWidget = state.widgets.find((w: any) => {
         return w.i == i;
@@ -81,11 +43,17 @@ const dashboardSlice = createSlice({
           state.selectedWidget = matchingWidget;
         }
       }
-      savePreferences(state.layouts, state.widgets)
+      mergePreferences({
+        "layout": state.layouts,
+        "widgets": state.widgets
+      })
     },
     addWidget: (state, action) => {
       state.widgets.push(action.payload)
-      savePreferences(state.layouts, state.widgets)
+      mergePreferences({
+        "layout": state.layouts,
+        "widgets": state.widgets
+      })
     },
     removeWidget: (state, action) => {
       if (action.payload == state.selectedWidgetKey) {
@@ -93,11 +61,14 @@ const dashboardSlice = createSlice({
         state.selectedWidget = null;
       }
       state.widgets = state.widgets.filter((w: any) => w.i != action.payload)
-      savePreferences(state.layouts, state.widgets)
+      mergePreferences({
+        "layout": state.layouts,
+        "widgets": state.widgets
+      })
     }
   },
 })
 
-export const { addWidget, removeWidget, setLayouts, setWidgetValue, setSelectedWidgetKey } = dashboardSlice.actions
+export const { addWidget, removeWidget, setLayouts, setSelectedWidgetValue, setSelectedWidgetKey } = dashboardSlice.actions
 
 export default dashboardSlice.reducer

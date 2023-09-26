@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { loadPreferences, mergePreferences } from './persist';
 
 export interface Location {
   name: string;
@@ -7,22 +8,26 @@ export interface Location {
 }
 export interface LocationState {
   location: {[key:string]: Location},
+  
 }
 
+const prefs = loadPreferences();
+
 const initialState: LocationState = {
-  location: { mylocation: null }
+  location: { ...prefs.location }
 }
 
 const settingsSlice = createSlice({
   name: 'settings',
   initialState: initialState,
   reducers: {
-    setLocation: (state, action) => {
-      state.location = action.payload;
-    }
+    setMyLocation: (state, action) => {
+      state.location.mylocation = action.payload;
+      mergePreferences({"location": state.location})
+    },
   },
 })
 
-export const { setLocation } = settingsSlice.actions
+export const { setMyLocation } = settingsSlice.actions
 
 export default settingsSlice.reducer

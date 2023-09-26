@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "./app/hooks"
 import { setView, toggleView } from "./features/viewSlicer"
 import { setSelectedWidgetKey } from "./features/dashboard/dashboardSlice"
 import Inspector from "./features/inspector/Inspector"
+import { SnackbarProvider } from "notistack"
 
 export const theme = createTheme({
   palette: {
@@ -43,8 +44,6 @@ function App() {
     }
   }, [selectedWidgetKey]);
 
-  
-
   let getHeader = () => {
     if (view === "Edit") {
       return (
@@ -74,17 +73,19 @@ function App() {
     }
   }
 
+
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <CssVarsProvider />
-        <div className="App">
-          {getHeader()}
-          <Dashboard />
-          {getFooter()}
-          {getInspector()}
-        </div>
-        
+      <SnackbarProvider autoHideDuration={1000}>
+        <CssBaseline />
+        <CssVarsProvider />
+          <div className="App">
+            {getHeader()}
+            <Dashboard />
+            {getFooter()}
+            {getInspector()}
+          </div>
+      </SnackbarProvider>
     </ThemeProvider>
   )
 }
