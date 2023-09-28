@@ -1,5 +1,5 @@
 import { FORM_FIELDS_ImageLink, ImageLink } from "../image-link/ImageLink"
-import Weather from "../weather/Weather"
+import Weather, { FORM_FIELDS_Weather } from "../weather/Weather"
 import { FORM_FIELDS_Map, Map } from "../map/Map"
 import Clock, { FORM_FIELDS_Clock } from "../clock/Clock"
 import { FormField } from "../form/Form"
@@ -27,7 +27,7 @@ export const widgetRegistry: IWidgetRegistry[] = [
     {
         name: 'Weather',
         component: Weather,
-        formFields: null,
+        formFields: FORM_FIELDS_Weather,
         icon: '☁️'
     },
     {
@@ -35,11 +35,5 @@ export const widgetRegistry: IWidgetRegistry[] = [
         component: Clock,
         formFields: FORM_FIELDS_Clock,
         icon: '🕔'
-    },
-    // {
-    //     name: 'Dashboard',
-    //     component: Dashboard,
-    //     formFields: null,
-    //     icon: '🗔'
-    // }
+    }
 ]

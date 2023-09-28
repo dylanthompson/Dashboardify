@@ -13,8 +13,9 @@ interface FormProps {
 
 export interface FormField {
    name: string;
-   label: string;
+   label?: string;
    type: string;
+   delayUpdate?: boolean;
 }
 
 const renderField = (field: FormField, currentValue: any, handleChange: Function) => {

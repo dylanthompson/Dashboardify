@@ -3,23 +3,36 @@ import styles from "./Weather.module.css";
 import { useAppSelector } from '../../app/hooks';
 import { enqueueSnackbar } from 'notistack';
 import { makeRequest } from '../request';
+import { FormField } from '../form/Form';
 
-interface WeatherProps {}
+interface WeatherProps {
+    location: string
+}
 
-const Weather: FC<WeatherProps> = () => {
+export const FORM_FIELDS_Weather: FormField[] = [
+    {
+       name: 'location',
+       type: 'string',
+       label: "Location",
+       delayUpdate: true
+    }
+ ]
+
+const Weather: FC<WeatherProps> = (props) => {
 
     let myLocation = useAppSelector((state) => state.settings.location.mylocation);
-    let [currentLocationName, setCurrentLocationName] = useState(myLocation?.name)
+    let initialLocationName = !props.location || props.location === 'MYLOCATION' ? myLocation?.name : props.location;
+    let [currentLocationName, setCurrentLocationName] = useState(initialLocationName)
     let [weatherData, setWeatherData] = useState(null);
     let [isLoading, setIsLoading] = useState(false);
 
-    if (!isLoading && (!weatherData || (myLocation?.name != currentLocationName))) {
-
-        if ((myLocation?.name != currentLocationName)) {
-            setCurrentLocationName(myLocation?.name);
+    if (!isLoading && (!weatherData || (initialLocationName != currentLocationName))) {
+        setIsLoading(true);
+        if ((initialLocationName != currentLocationName)) {
+            setCurrentLocationName(initialLocationName);
         }
         
-        makeRequest(`https://api.weatherapi.com/v1/current.json?key=804ed3c2fd694c0e990212829232609&q=${myLocation.name}&aqi=no` )
+        makeRequest(`https://api.weatherapi.com/v1/current.json?key=804ed3c2fd694c0e990212829232609&q=${initialLocationName}&aqi=no` )
             .then(
             (result) => {
                 setIsLoading(false)
@@ -30,7 +43,7 @@ const Weather: FC<WeatherProps> = () => {
             // exceptions from actual bugs in components.
             (error) => {
                     setIsLoading(false)
-                    enqueueSnackbar<'error'>("Failed to load weather data for location: " + myLocation.name)
+                    enqueueSnackbar<'error'>("Failed to load weather data for location: " + initialLocationName)
             }
             )
     }

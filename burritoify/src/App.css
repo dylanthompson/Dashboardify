@@ -92,6 +92,11 @@ p, h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
-.app-footer {
-  
+.react-grid-item > .react-resizable-handle {
+  background-color: var(--mui-palette-primary-contrastText);
+}
+
+.react-grid-item > .react-resizable-handle.react-resizable-handle-se {
+  margin-bottom: 1px;
+  margin-right: 1px;
 }

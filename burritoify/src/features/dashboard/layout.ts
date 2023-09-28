@@ -38,7 +38,8 @@ type ResponsiveLayouts = { [key:string]: Layout[]};
 
 const defaultWidgets = [
   { i: 'Map|a', location: 'MYLOCATION' },
-  { i: 'ImageLink|b', link: "https://www.google.com", image: "//images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940" },
+  { i: 'Weather|b', location: 'MYLOCATION' },
+  { i: 'Clock|c', location: 'MYLOCATION', showSeconds: false }
 ];
 
 export function getDefaultWidgets(): any[] {
