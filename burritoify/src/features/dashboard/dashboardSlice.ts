@@ -28,7 +28,7 @@ const dashboardSlice = createSlice({
     setLayouts: (state, action) => {
       state.layouts = action.payload;
       mergePreferences({
-        "layout": state.layouts,
+        "layouts": state.layouts,
         "widgets": state.widgets
       })
     },
@@ -44,14 +44,14 @@ const dashboardSlice = createSlice({
         }
       }
       mergePreferences({
-        "layout": state.layouts,
+        "layouts": state.layouts,
         "widgets": state.widgets
       })
     },
     addWidget: (state, action) => {
       state.widgets.push(action.payload)
       mergePreferences({
-        "layout": state.layouts,
+        "layouts": state.layouts,
         "widgets": state.widgets
       })
     },
@@ -62,7 +62,7 @@ const dashboardSlice = createSlice({
       }
       state.widgets = state.widgets.filter((w: any) => w.i != action.payload)
       mergePreferences({
-        "layout": state.layouts,
+        "layouts": state.layouts,
         "widgets": state.widgets
       })
     }

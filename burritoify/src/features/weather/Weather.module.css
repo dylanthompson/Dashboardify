@@ -1,0 +1,61 @@
+.weather {
+    container-name: wrapper;
+    container-type: size;
+}
+
+.weatherFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    height:100%;
+}
+
+
+.temperature {
+    display: flex;
+    justify-content: center;
+    container-type: inline-size;
+}
+
+.icon {
+    padding-top:8px;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+span.temperatureText {
+    width: 100%;
+    font-size: 28cqw;
+}
+
+
+.tempFlex {
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    align-items: center;
+
+}
+
+@container wrapper (aspect-ratio > 12/9 ) {
+    .weatherFlex {
+        flex-direction: row;
+    }
+    .icon {
+        height: 100%;
+        padding-left: 16px;
+    }
+    .icon > img {
+        height:100%;
+    }
+    .temperature {
+        height: 100%;
+        align-items: center;
+        display: flex;
+    }
+    span.temperatureText {
+        font-size: 40cqh;
+    }
+}

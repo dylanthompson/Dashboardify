@@ -13,6 +13,7 @@ interface FormProps {
 
 export interface FormField {
    name: string;
+   label: string;
    type: string;
 }
 
@@ -20,9 +21,9 @@ const renderField = (field: FormField, currentValue: any, handleChange: Function
    if (field.type) {
       switch(field.type) {
          case "string":
-            return <TextField id={field.name} label={field.name} className={styles.stringField + ' ' + styles.formField} type="text" name={field.name} value={currentValue || ''} onChange={(e) => handleChange(e, field)}/>
+            return <TextField id={field.name} label={field.label || field.name} className={styles.stringField + ' ' + styles.formField} type="text" name={field.name} value={currentValue || ''} onChange={(e) => handleChange(e, field)}/>
          case "boolean":
-            return <FormControlLabel control={<Checkbox id={field.name} className={styles.stringField + ' ' + styles.formField} name={field.name} value={currentValue || false} onChange={(e) => handleChange(e, field)} />} label={field.name} />
+            return <FormControlLabel control={<Checkbox id={field.name} className={styles.stringField + ' ' + styles.formField} name={field.name} value={currentValue || false} onChange={(e) => handleChange(e, field)} />} label={field.label ||field.name} />
          default:
             return <span className={styles.error}>Unknown field type {field.type}</span>
          

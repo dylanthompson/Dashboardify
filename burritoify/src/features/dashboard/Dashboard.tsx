@@ -30,7 +30,6 @@ export function Dashboard(props: any) {
   }
 
   const findComponent = function(widget: any) {
-    let newDashboardKey = new Date().toISOString();
     let type = widget?.i?.split('|')[0];
     switch (type){
       case 'ImageLink':
@@ -61,7 +60,7 @@ export function Dashboard(props: any) {
 
   return (
     <ResponsiveGridLayout
-      className={styles.dashboard}
+      className={styles.dashboard + (view === 'Edit' ? " " + styles.edit : "")}
       layouts={layouts}
       rowHeight={80}
       verticalCompact={true}

@@ -4,6 +4,11 @@ div.dashboard {
     display: flex;
 } 
 
+div.dashboard.edit {
+    margin-top: 28px;
+    margin-bottom: 124px;
+}
+
 div.selected {
     z-index: 5;
 }

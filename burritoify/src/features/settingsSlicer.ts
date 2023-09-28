@@ -3,8 +3,8 @@ import { loadPreferences, mergePreferences } from './persist';
 
 export interface Location {
   name: string;
-  latitude: string;
-  longitude: string;
+  lat?: string;
+  lon?: string;
 }
 export interface LocationState {
   location: {[key:string]: Location},
@@ -14,7 +14,7 @@ export interface LocationState {
 const prefs = loadPreferences();
 
 const initialState: LocationState = {
-  location: { ...prefs.location }
+  location: prefs?.location ? { ...prefs.location } : null
 }
 
 const settingsSlice = createSlice({

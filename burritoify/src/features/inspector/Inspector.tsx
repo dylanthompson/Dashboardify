@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { widgetRegistry } from '../widget/Widget.registry';
 import { setSelectedWidgetValue } from '../dashboard/dashboardSlice';
 import { FC } from 'react';
-import Form, { FormField, getFormValue } from '../Form/Form';
+import Form, { FormField, getFormValue } from '../form/Form';
 import { store } from '../../app/store';
 
 interface InspectorProps {}

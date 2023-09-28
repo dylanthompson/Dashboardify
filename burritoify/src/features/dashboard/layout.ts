@@ -5,16 +5,16 @@ import { Layout } from "react-grid-layout";
 
 const DEFAULT_BREAKPOINTS: any = {
     lg: {
-        breakpoint: 1350,
+        breakpoint: 1750,
         columns: 12
     },
     sm: {
-        breakpoint: 980,
+        breakpoint: 1050,
         columns: 6
     },
     xs: {
         breakpoint: 0,
-        columns: 2
+        columns: 4
     }
 }
 

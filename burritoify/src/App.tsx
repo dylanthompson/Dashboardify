@@ -13,6 +13,7 @@ import { setView, toggleView } from "./features/viewSlicer"
 import { setSelectedWidgetKey } from "./features/dashboard/dashboardSlice"
 import Inspector from "./features/inspector/Inspector"
 import { SnackbarProvider } from "notistack"
+import Footer from "./features/footer/Footer"
 
 export const theme = createTheme({
   palette: {
@@ -57,22 +58,12 @@ function App() {
   let getFooter = () => {
     if (view === "Edit") {
       return (
-          <ToolBar />
+        <Footer />
       )
     } else {
       return null;
     }
   }
-  let getInspector = () => {
-    if (view === 'Edit') {
-      return (
-        <Inspector />
-      )
-    } else {
-      return null;
-    }
-  }
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -83,7 +74,6 @@ function App() {
             {getHeader()}
             <Dashboard />
             {getFooter()}
-            {getInspector()}
           </div>
       </SnackbarProvider>
     </ThemeProvider>

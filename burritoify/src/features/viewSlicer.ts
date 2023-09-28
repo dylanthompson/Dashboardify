@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { loadPreferences } from './persist';
+import { loadPreferences, mergePreferences } from './persist';
 
 export interface ViewState {
   view: "Edit" | "View",
@@ -7,7 +7,8 @@ export interface ViewState {
 let defaultViewName = 'View';
 
 if (typeof localStorage !== 'undefined') {
-  defaultViewName = localStorage['defaultView'] || 'View';
+  let prefs = loadPreferences();
+  defaultViewName = prefs.view || 'View';
 }
 
 const initialState: ViewState = {
@@ -20,9 +21,11 @@ const viewSlice = createSlice({
   reducers: {
     setView: (state, action) => {
       state.view = action.payload;
+      mergePreferences({"view": state.view})
     },
     toggleView: (state) => {
       state.view = state.view === 'Edit' ? 'View': 'Edit';
+      mergePreferences({"view": state.view})
     }
   },
 })
