@@ -5,9 +5,9 @@ div.dashboard {
 } 
 
 div.dashboard.edit {
-    margin-top: 28px;
-    margin-bottom: 124px;
+    margin-bottom: 300px;
 }
+
 
 div.selected {
     z-index: 5;

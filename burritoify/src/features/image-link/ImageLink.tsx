@@ -9,7 +9,7 @@ export const FORM_FIELDS_ImageLink = [
   },
   {
     name: 'image',
-    type: 'string',
+    type: 'image',
   }
 ]
 
@@ -20,6 +20,9 @@ export function ImageLink(props: any) {
   return (
     <Box className={styles.imageLink}>
       <a className={styles.link} href={view === "Edit" ? undefined : curWidget?.link}>
+        <div className={styles.background}>
+          <img src={curWidget?.image}/>
+        </div>
         <img className={styles.image} src={curWidget?.image} />
       </a>
     </Box>

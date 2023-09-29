@@ -5,6 +5,7 @@ import { Button, DialogActions } from '@mui/material';
 export interface DialogProps {
   open: boolean;
   selectedValue: string;
+  title: string;
   onClose: (value: string) => void;
   children: any[]
 }
@@ -18,7 +19,7 @@ export function Dialog(props: DialogProps) {
 
   return (
     <MuiDialog onClose={handleClose} open={open}>
-      <DialogTitle>Settings</DialogTitle>
+      <DialogTitle>{props.title}</DialogTitle>
       {props.children}
       <DialogActions>
         <Button onClick={handleClose} color="primary">

@@ -1,0 +1,5 @@
+{
+    "apiURL": "http://localhost:52795/",
+    "imageSuggestApi": "image?q=",
+    "toBase64Api": "toBase64?url="
+}

@@ -1,5 +1,4 @@
 import logo from "./logo.svg"
-import { Header } from "./features/header/Header"
 import { Dashboard } from "./features/dashboard/Dashboard"
 import { ToolBar } from "./features/toolbar/Toolbar"
 import "./App.css"
@@ -45,16 +44,6 @@ function App() {
     }
   }, [selectedWidgetKey]);
 
-  let getHeader = () => {
-    if (view === "Edit") {
-      return (
-          <Header />
-      )
-    } else {
-      return null;
-    }
-  }
-
   let getFooter = () => {
     if (view === "Edit") {
       return (
@@ -67,11 +56,10 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SnackbarProvider autoHideDuration={1000}>
+      <SnackbarProvider autoHideDuration={4000}>
         <CssBaseline />
         <CssVarsProvider />
           <div className="App">
-            {getHeader()}
             <Dashboard />
             {getFooter()}
           </div>
