@@ -42,11 +42,11 @@ const Form: FC<FormProps> = (props) => {
       if (props.handleSubmit) {
          props.handleSubmit(e);
       }
-      event.preventDefault()
+      e.preventDefault()
    }
 
    let handleViewChange = (e, fields) => {
-      props.handleViewChange(e, fields);
+      props?.handleViewChange?.(e, fields);
    }
 
    let handleChange = (e, field) => {

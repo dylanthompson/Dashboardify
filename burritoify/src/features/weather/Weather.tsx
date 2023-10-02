@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from "./Weather.module.css";
 import { useAppSelector } from '../../app/hooks';
 import { enqueueSnackbar } from 'notistack';
@@ -21,33 +21,29 @@ export const FORM_FIELDS_Weather: FormField[] = [
 const Weather: FC<WeatherProps> = (props) => {
 
     let myLocation = useAppSelector((state) => state.settings.location.mylocation);
-    let initialLocationName = !props.location || props.location === 'MYLOCATION' ? myLocation?.name : props.location;
-    let [currentLocationName, setCurrentLocationName] = useState(initialLocationName)
+    let [currentLocationName, setCurrentLocationName] = useState(props.location || myLocation?.name)
     let [weatherData, setWeatherData] = useState(null);
     let [isLoading, setIsLoading] = useState(false);
 
-    if (!isLoading && (!weatherData || (initialLocationName != currentLocationName))) {
-        setIsLoading(true);
-        if ((initialLocationName != currentLocationName)) {
-            setCurrentLocationName(initialLocationName);
+    useEffect(() => {
+        let actualLocation = props.location === 'MYLOCATION' ? myLocation?.name : props.location;
+        if (!isLoading && (!weatherData || actualLocation != currentLocationName)) {
+            setCurrentLocationName(actualLocation)
+            setIsLoading(true);
+            let weatherApiUrl = `https://api.weatherapi.com/v1/current.json?key=804ed3c2fd694c0e990212829232609&q=${actualLocation}&aqi=no`
+            makeRequest(weatherApiUrl)
+                .then(
+                    (result) => {
+                        setIsLoading(false)
+                        setWeatherData(result);
+                    },
+                    (error) => {
+                        setIsLoading(false)
+                        enqueueSnackbar<'error'>("Failed to load weather data for location: " + actualLocation)
+                    }
+                )
         }
-        
-        makeRequest(`https://api.weatherapi.com/v1/current.json?key=804ed3c2fd694c0e990212829232609&q=${initialLocationName}&aqi=no` )
-            .then(
-            (result) => {
-                setIsLoading(false)
-                setWeatherData(result);
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-                    setIsLoading(false)
-                    enqueueSnackbar<'error'>("Failed to load weather data for location: " + initialLocationName)
-            }
-            )
-    }
-    
+    },[myLocation, props.location])
 
     return (
         <div className={styles.weather}>
