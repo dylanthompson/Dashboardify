@@ -39,7 +39,7 @@ span.temperatureText {
 
 }
 
-@container wrapper (aspect-ratio > 12/9 ) {
+@container wrapper (aspect-ratio > 12 / 9) {
     .weatherFlex {
         flex-direction: row;
     }

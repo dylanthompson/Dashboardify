@@ -1,3 +1,8 @@
+.imageLink {
+    container-name: wrapper;
+    container-type: size;
+}
+
 a.link {
     height: 100%;
     width: 100%;
@@ -29,4 +34,11 @@ a.link > .background {
 a.link > .background > img {
     width: 100%;
     height: 100%;
+}
+
+@container wrapper (aspect-ratio < 12 / 9) {
+    a.link > img.image {
+        width: 100%;
+        object-fit: contain;
+    }
 }
