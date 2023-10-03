@@ -39,7 +39,20 @@ span.temperatureText {
 
 }
 
-@container wrapper (aspect-ratio > 12 / 9) {
+.loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.loaderIcon {
+    height: 48px;
+    width: 48px;
+}
+
+@container wrapper (aspect-ratio > 12 / 9 ) {
     .weatherFlex {
         flex-direction: row;
     }

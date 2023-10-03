@@ -4,6 +4,7 @@ import { useAppSelector } from '../../app/hooks';
 import { enqueueSnackbar } from 'notistack';
 import { makeRequest } from '../request';
 import { FormField } from '../form/Form';
+import { Oval, RotatingLines } from 'react-loader-spinner';
 
 interface WeatherProps {
     location: string
@@ -45,18 +46,39 @@ const Weather: FC<WeatherProps> = (props) => {
         }
     },[myLocation, props.location])
 
-    return (
-        <div className={styles.weather}>
-            <div className={styles.weatherFlex}>
-                <div className={styles.icon}><img title={weatherData?.current?.condition?.text} src={weatherData?.current?.condition.icon}/></div>
-                <div className={styles.tempFlex}>
-                    <div className={styles.temperature}>
-                        <span className={styles.temperatureText}>{weatherData?.current?.temp_f}°</span>
+    let renderContent = () => {
+        if (isLoading || !weatherData) {
+            return (
+                <div className={styles.loaderContainer}>
+                    <div className={styles.loaderIcon}>
+                        <RotatingLines
+                            strokeColor="grey"
+                            strokeWidth="5"
+                            animationDuration="0.75"
+                            width="96"
+                            visible={true}
+                        />
                     </div>
                 </div>
-            </div>
+            )
+        } else {
+            return (
+                <div className={styles.weatherFlex}>
+                    <div className={styles.icon}><img title={weatherData?.current?.condition?.text} src={weatherData?.current?.condition.icon}/></div>
+                    <div className={styles.tempFlex}>
+                        <div className={styles.temperature}>
+                            <span className={styles.temperatureText}>{weatherData?.current?.temp_f}°</span>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    return (
+        <div className={styles.weather}>
+            {renderContent()}
         </div>
-        
     )
 };
 
