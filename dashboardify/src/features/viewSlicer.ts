@@ -8,7 +8,7 @@ let defaultViewName = 'View';
 
 if (typeof localStorage !== 'undefined') {
   let prefs = loadPreferences();
-  defaultViewName = prefs.view || 'View';
+  defaultViewName = prefs?.view || 'View';
 }
 
 const initialState: ViewState = {
