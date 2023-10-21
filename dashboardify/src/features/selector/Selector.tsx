@@ -7,7 +7,7 @@ import { widgetRegistry, IWidgetRegistry } from '../widget/Widget.registry';
 import styles from "./Selector.module.css";
 import { getDefaultWidgets } from '../dashboard/layout';
 import { setView } from '../viewSlicer';
-import { Dialog } from '../dialog/Dialog';
+import Dialog from '../dialog/Dialog';
 import Settings from '../settings/Settings';
 import { useSnackbar } from 'notistack';
 
@@ -81,8 +81,7 @@ export function Selector(props: any) {
             </Box>
             <Dialog
                 open={open}
-                onClose={handleClose}
-            >
+                onClose={handleClose}      >
                 <Settings />
             </Dialog>
         </div>

@@ -5,7 +5,7 @@ export default {
   title: "ImagePicker",
 };
 
-export const Default = () => <ImagePicker />;
+export const Default = () => <ImagePicker setImage={undefined} />;
 
 Default.story = {
   name: 'default',

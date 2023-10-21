@@ -5,7 +5,9 @@ import Dialog from './Dialog';
 
 describe('<Dialog />', () => {
   test('it should mount', () => {
-    render(<Dialog />);
+    render(<Dialog open={false} onClose={function (value: string): void {
+      throw new Error('Function not implemented.');
+    } } />);
     
     const dialog = screen.getByTestId('Dialog');
 

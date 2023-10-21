@@ -1,7 +1,7 @@
 import { Button, Checkbox, FormControl, FormControlLabel, TextField } from '@mui/material';
 import styles from './Form.module.css';
 import { FC, useState } from 'react';
-import { Dialog } from '../dialog/Dialog';
+import Dialog from '../dialog/Dialog';
 import ImagePicker from '../image-picker/ImagePicker';
 import { enqueueSnackbar } from 'notistack';
 import environment from '../../environment.json';

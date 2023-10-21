@@ -4,7 +4,7 @@ const LazyForm = lazy(() => import('./Form'));
 
 const Form = (props: JSX.IntrinsicAttributes & { children?: React.ReactNode; }) => (
   <Suspense fallback={null}>
-    <LazyForm {...props} />
+    <LazyForm handleSubmit={undefined} handleViewChange={undefined} handleChange={undefined} formFields={[]} value={undefined} {...props} />
   </Suspense>
 );
 

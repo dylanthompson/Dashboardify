@@ -5,7 +5,7 @@ import ImagePicker from './ImagePicker';
 
 describe('<ImagePicker />', () => {
   test('it should mount', () => {
-    render(<ImagePicker />);
+    render(<ImagePicker setImage={undefined} />);
     
     const imagePicker = screen.getByTestId('ImagePicker');
 

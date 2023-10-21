@@ -5,7 +5,7 @@ export default {
   title: "Clock",
 };
 
-export const Default = () => <Clock />;
+export const Default = () => <Clock i={''} showSeconds={false} />;
 
 Default.story = {
   name: 'default',

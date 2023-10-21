@@ -7,7 +7,7 @@ export var makeRequest = (url: string): Promise<any> => {
         if (cache[url].promise) {
             return cache[url].promise;
         } else if (cache[url].result) {
-            let diff = Math.abs(new Date() - cache[url].timestamp);
+            let diff = Math.abs((new Date()).valueOf() - cache[url].timestamp.valueOf());
             if (Math.floor((diff/1000)/60) < 2) {
                 return of(cache[url].result).toPromise();
             }

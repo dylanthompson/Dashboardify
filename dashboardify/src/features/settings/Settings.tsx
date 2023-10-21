@@ -56,7 +56,7 @@ const Settings: FC<SettingsProps> = () => {
 
   return (
    <div data-testid="Settings" className={styles.settings}>
-      <Form {...{formFields: FORM_FIELDS_Settings, value: { name: myStateLocationName}, handleChange, handleSubmit}}>
+      <Form {...{formFields: FORM_FIELDS_Settings, value: { name: myStateLocationName}, handleChange, handleSubmit, handleViewChange: null}}>
       </Form>
    </div>
  )

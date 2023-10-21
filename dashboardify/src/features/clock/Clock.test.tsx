@@ -5,7 +5,7 @@ import Clock from './Clock';
 
 describe('<Clock />', () => {
   test('it should mount', () => {
-    render(<Clock />);
+    render(<Clock i={''} showSeconds={false} />);
     
     const clock = screen.getByTestId('Clock');
 

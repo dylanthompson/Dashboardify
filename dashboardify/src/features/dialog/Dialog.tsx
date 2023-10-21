@@ -2,15 +2,15 @@ import DialogTitle from '@mui/material/DialogTitle';
 import MuiDialog from '@mui/material/Dialog';
 import { Button, DialogActions } from '@mui/material';
 
-export interface DialogProps {
+export  interface DialogProps {
   open: boolean;
-  selectedValue: string;
-  title: string;
+  selectedValue?: string;
+  title?: string;
   onClose: (value: string) => void;
-  children: any[]
+  children?: any[] | any
 }
 
-export function Dialog(props: DialogProps) {
+export default function Dialog(props: DialogProps) {
   const { onClose, selectedValue, open } = props;
 
   const handleClose = () => {

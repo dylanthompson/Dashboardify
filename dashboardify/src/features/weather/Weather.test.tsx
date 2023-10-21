@@ -5,7 +5,7 @@ import Weather from './Weather';
 
 describe('<Weather />', () => {
   test('it should mount', () => {
-    render(<Weather />);
+    render(<Weather location={''} />);
     const weather = screen.getByTestId('Weather');
     expect(weather).toBeInTheDocument();
   });

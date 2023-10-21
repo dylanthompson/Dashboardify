@@ -4,7 +4,7 @@ const LazyImagePicker = lazy(() => import('./ImagePicker'));
 
 const ImagePicker = (props: JSX.IntrinsicAttributes & { children?: React.ReactNode; }) => (
   <Suspense fallback={null}>
-    <LazyImagePicker {...props} />
+    <LazyImagePicker setImage={undefined} {...props} />
   </Suspense>
 );
 
