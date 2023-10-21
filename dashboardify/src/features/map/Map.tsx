@@ -13,7 +13,7 @@ export const FORM_FIELDS_Map = [
 
 let mapWidget = function (props: any) {
 
-    let mylocation = useAppSelector((state) => state.settings.location.mylocation);
+    let mylocation = useAppSelector((state) => state.settings.location?.mylocation);
 
     let defaultGeoCoords:Point = [50.879, 4.6997];
 

@@ -17,7 +17,7 @@ export const FORM_FIELDS_Settings = [
 interface SettingsProps {}
 
 const Settings: FC<SettingsProps> = () => {
-   let storeMyLocationName = useAppSelector((state) => state.settings.location.mylocation?.name);
+   let storeMyLocationName = useAppSelector((state) => state.settings.location?.mylocation?.name);
    let dispatch = useAppDispatch();
    let [myStateLocationName, setMyStateLocationName] = useState(storeMyLocationName || '');
    let [isLoading, setIsLoading] = useState(false);

@@ -21,7 +21,7 @@ export const FORM_FIELDS_Weather: FormField[] = [
 
 const Weather: FC<WeatherProps> = (props) => {
 
-    let myLocation = useAppSelector((state) => state.settings.location.mylocation);
+    let myLocation = useAppSelector((state) => state.settings.location?.mylocation);
     let [currentLocationName, setCurrentLocationName] = useState(props.location || myLocation?.name)
     let [weatherData, setWeatherData] = useState(null);
     let [isLoading, setIsLoading] = useState(false);
