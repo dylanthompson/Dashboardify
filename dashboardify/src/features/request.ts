@@ -58,7 +58,12 @@ export var makeAmplifyRequest = (apiName: string, path: string): Promise<any> =>
 
     const promise = get({ 
         apiName: apiName,
-        path: path 
+        path: path ,
+        options: {
+            headers: {
+              Authorization: null
+            }
+          }
       }).response;
     
     cache[cacheKey].promise = promise;

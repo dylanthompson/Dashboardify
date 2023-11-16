@@ -14,6 +14,11 @@ import Inspector from "./features/inspector/Inspector"
 import { SnackbarProvider } from "notistack"
 import Footer from "./features/footer/Footer"
 
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from './amplifyconfiguration.json';
+
+Amplify.configure(amplifyconfig);
+
 export const theme = createTheme({
   palette: {
     mode: 'dark',

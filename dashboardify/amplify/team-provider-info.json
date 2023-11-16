@@ -20,6 +20,9 @@
       },
       "api": {
         "imageHelper": {}
+      },
+      "auth": {
+        "dashboardify": {}
       }
     }
   }
