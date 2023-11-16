@@ -64,7 +64,9 @@ export var makeAmplifyRequest = (apiName: string, path: string): Promise<any> =>
               Authorization: null
             }
           }
-      }).response;
+      }).response.then((result) => {
+        return result.body.json();
+    });
     
     cache[cacheKey].promise = promise;
     
