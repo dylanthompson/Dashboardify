@@ -1,5 +1,5 @@
 {
     "apiName": "imageHelper",
-    "imageSuggestApi": "image-helper/image?q=",
-    "toBase64Api": "image-helper/toBase64?url="
+    "imageSuggestApi": "/image-helper/image?q=",
+    "toBase64Api": "/image-helper/toBase64?url="
 }
