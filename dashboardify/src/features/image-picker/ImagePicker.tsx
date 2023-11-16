@@ -3,7 +3,7 @@ import styles from './ImagePicker.module.css';
 import Form, { FormField, getFormValue } from '../form/Form';
 import environment from '../../environment.json'
 import { Button } from '@mui/material';
-import { makeRequest } from '../request';
+import { makeAmplifyRequest } from '../request';
 
 interface ImagePickerProps {
    setImage: Function
@@ -31,7 +31,7 @@ const ImagePicker: FC<ImagePickerProps> = (props) => {
 
    let handleSubmit = async (event) => {
       //do api request, save responses
-      const imageUrls = await makeRequest(environment.apiURL + environment.imageSuggestApi + queryObject.query);
+      const imageUrls = await makeAmplifyRequest(environment.apiName, environment.imageSuggestApi + queryObject.query);
       setImages(imageUrls)
    }
 

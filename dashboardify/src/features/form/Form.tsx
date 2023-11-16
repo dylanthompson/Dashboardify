@@ -5,7 +5,7 @@ import Dialog from '../dialog/Dialog';
 import ImagePicker from '../image-picker/ImagePicker';
 import { enqueueSnackbar } from 'notistack';
 import environment from '../../environment.json';
-import { makeRequest } from '../request';
+import { makeAmplifyRequest } from '../request';
 
 interface FormProps {
    handleSubmit: Function,
@@ -69,7 +69,7 @@ const Form: FC<FormProps> = (props) => {
 
    let renderButton = () => {
       if (props.handleSubmit) {
-         return <Button type="submit">Save</Button>
+         return <Button type="submit">Submit</Button>
       }
    }
 
@@ -78,7 +78,7 @@ const Form: FC<FormProps> = (props) => {
       setImagePickerOpen(true);
    };
 
-   const toDataURL = url => makeRequest(environment.apiURL + environment.toBase64Api + url)
+   const toDataURL = url => makeAmplifyRequest(environment.apiName, environment.toBase64Api + url)
 
    const encodeImage = async (url:string, field: FormField) => {
       if (!url || (!url.startsWith('https://') && !url.startsWith('http://'))) {

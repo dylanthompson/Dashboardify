@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import styles from "./Weather.module.css";
 import { useAppSelector } from '../../app/hooks';
 import { enqueueSnackbar } from 'notistack';
-import { makeRequest } from '../request';
+import { makeHttpRequest } from '../request';
 import { FormField } from '../form/Form';
 import { Oval, RotatingLines } from 'react-loader-spinner';
 
@@ -28,11 +28,11 @@ const Weather: FC<WeatherProps> = (props) => {
 
     useEffect(() => {
         let actualLocation = props.location === 'MYLOCATION' ? myLocation?.name : props.location;
-        if (!isLoading && (!weatherData || actualLocation != currentLocationName)) {
+        if (!isLoading && actualLocation &&  (!weatherData || actualLocation != currentLocationName)) {
             setCurrentLocationName(actualLocation)
             setIsLoading(true);
             let weatherApiUrl = `https://api.weatherapi.com/v1/current.json?key=804ed3c2fd694c0e990212829232609&q=${actualLocation}&aqi=no`
-            makeRequest(weatherApiUrl)
+            makeHttpRequest(weatherApiUrl)
                 .then(
                     (result) => {
                         setIsLoading(false)

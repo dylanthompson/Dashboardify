@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/image-helper": {
+      "name": "/image-helper",
+      "lambdaFunction": "imageHelperLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

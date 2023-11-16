@@ -1,3 +1,5 @@
+import { defaultWidgets } from "./defaultWidgets";
+
 export function mergePreferences(data: any) { //layouts: any, widgets?: any[]) {
     if (typeof localStorage !== 'undefined') {
         let appDataString = localStorage.getItem("appData");
@@ -21,9 +23,15 @@ export function loadPreferences() {
     let ls: any = {};
     if (typeof localStorage !== 'undefined') {
         try {
-            return JSON.parse(localStorage.getItem("appData")) || null;
+            let appData = JSON.parse(localStorage.getItem("appData"));
+            if (!appData) {
+                mergePreferences(defaultWidgets);
+                return defaultWidgets;
+            }
+            return appData;
         } catch (e) {
-            /*Ignore*/
+            mergePreferences(defaultWidgets);
+            return defaultWidgets;
         }
     }
     return null;

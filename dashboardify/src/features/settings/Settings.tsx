@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Form, { getFormValue } from '../form/Form';
 import { setMyLocation } from '../settingsSlicer';
 import { useSnackbar } from 'notistack';
-import { makeRequest } from '../request';
+import { makeHttpRequest } from '../request';
 
 export const FORM_FIELDS_Settings = [
    {
@@ -32,7 +32,7 @@ const Settings: FC<SettingsProps> = () => {
       }
 
       setIsLoading(true);
-      makeRequest("https://geocode.maps.co/search?q="  + myStateLocationName)
+      makeHttpRequest("https://geocode.maps.co/search?q="  + myStateLocationName)
          .then(
             (result) => {
                setIsLoading(false)
