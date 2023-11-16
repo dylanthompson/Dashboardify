@@ -49,7 +49,7 @@ export var makeHttpRequest = (url: string): Promise<any> => {
 }
 
 export var makeAmplifyRequest = (apiName: string, path: string): Promise<any> => {
-    let cacheKey = '/' + apiName + '/' + path;
+    let cacheKey = apiName + '_' + path;
 
     let cached = checkCache(cacheKey);
     if (cached) {
@@ -58,7 +58,7 @@ export var makeAmplifyRequest = (apiName: string, path: string): Promise<any> =>
 
     const promise = get({ 
         apiName: apiName,
-        path: cacheKey ,
+        path: path ,
         options: {
             headers: {
               Authorization: null
