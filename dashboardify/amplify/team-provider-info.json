@@ -15,7 +15,7 @@
       "function": {
         "imageHelperLambda": {
           "deploymentBucketName": "amplify-amplify7e458f739f1a4-staging-00618-deployment",
-          "s3Key": "amplify-builds/imageHelperLambda-77303751566162634773-build.zip"
+          "s3Key": "amplify-builds/imageHelperLambda-78465971737865657a6d-build.zip"
         }
       },
       "api": {
