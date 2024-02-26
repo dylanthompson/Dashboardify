@@ -27,7 +27,7 @@ a.link > .background {
     height: 100%;
     /* display: block; */
     
-    filter: blur(3px);
+    filter: blur(1px);
     position: absolute;
     z-index: -1;
 }
