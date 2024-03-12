@@ -4,11 +4,11 @@ import { loadPreferences, mergePreferences } from './persist';
 export interface ViewState {
   view: "Edit" | "View",
 }
-let defaultViewName = 'View';
+let defaultViewName = 'Edit';
 
 if (typeof localStorage !== 'undefined') {
   let prefs = loadPreferences();
-  defaultViewName = prefs?.view || 'View';
+  defaultViewName = prefs?.view || 'Edit';
 }
 
 const initialState: ViewState = {
